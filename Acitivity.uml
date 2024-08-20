@@ -1,0 +1,19 @@
+@startuml
+start
+
+:Patient requests appointment;
+:Receptionist schedules appointment;
+:Patient arrives at hospital;
+
+if (Vitals check required?) then (yes)
+    :Nurse checks vitals;
+    :Nurse updates medical record;
+endif
+
+:Doctor diagnoses patient;
+:Doctor updates medical record;
+
+:Patient completes visit;
+
+stop
+@enduml
