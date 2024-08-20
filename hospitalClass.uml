@@ -1,0 +1,71 @@
+@startuml
+
+class Patient {
+  -id: String
+  -name: String
+  -address: String
+  -phoneNumber: String
+  +requestAppointment()
+  +arriveAtHospital()
+  +requestMedicalRecords()
+}
+
+class Receptionist {
+  -id: String
+  -name: String
+  -shift: String
+  +createAppointment()
+  +registerArrival()
+  +notifyDoctor()
+}
+
+class Appointment {
+  -date: Date
+  -time: Time
+  -patientId: String
+  -doctorId: String
+  +confirmDetails()
+}
+
+class Hospital {
+  -name: String
+  -location: String
+  +registerPatientArrival()
+}
+
+class Nurse {
+  -id: String
+  -name: String
+  -department: String
+  +checkVitals()
+  +updateMedicalRecords()
+}
+
+class MedicalRecord {
+  -patientId: String
+  -recordDetails: String
+  -vitals: String
+  -diagnosis: String
+  -treatmentPlan: String
+  +updateVitals()
+  +updateDiagnosis()
+}
+
+class Doctor {
+  -id: String
+  -name: String
+  -specialization: String
+  +diagnosePatient()
+  +updateMedicalRecords()
+}
+
+' Relationships
+Patient --> Appointment : "makes"
+Appointment --> Doctor : "managed by"
+Appointment --> Receptionist : "created by"
+Hospital --> Patient : "registers"
+Nurse --> Patient : "attends to"
+Patient --> MedicalRecord : "has"
+Doctor --> MedicalRecord : "updates"
+
+@enduml
