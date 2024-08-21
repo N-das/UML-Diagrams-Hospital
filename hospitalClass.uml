@@ -51,6 +51,10 @@ class MedicalRecord {
   +updateDiagnosis()
 }
 
+class Database
+{
+  
+}
 class Doctor {
   -id: String
   -name: String
