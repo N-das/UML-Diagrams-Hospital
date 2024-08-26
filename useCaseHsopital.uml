@@ -1,0 +1,39 @@
+@startuml
+
+actor Patient
+actor Receptionist
+actor Nurse
+actor Doctor
+
+usecase "Request Appointment" as UC1
+usecase "Arrive at Hospital" as UC2
+usecase "Complete Visit" as UC3
+usecase "Request Medical Records" as UC4
+
+usecase "Schedule Appointment" as UC5
+usecase "Register Arrival" as UC6
+usecase "Notify Doctor" as UC7
+
+usecase "Check Vitals" as UC8
+usecase "Update Vitals" as UC9
+
+usecase "Diagnose Patient" as UC10
+usecase "Update Diagnosis and Treatment" as UC11
+
+' Define relationships
+Patient --> UC1 : requests
+Patient --> UC2 : arrives
+Patient --> UC3 : completes visit
+Patient --> UC4 : requests
+
+Receptionist --> UC5 : schedules
+Receptionist --> UC6 : registers
+Receptionist --> UC7 : notifies
+
+Nurse --> UC8 : checks
+Nurse --> UC9 : updates
+
+Doctor --> UC10 : diagnoses
+Doctor --> UC11 : updates
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+
+start
+
+:Request Appointment;
+:Create Appointment;
+:Confirm Appointment Details;
+:Notify Doctor;
+
+:Arrive at Hospital;
+:Register Arrival;
+:Assign Nurse;
+
+:Check Vitals;
+:Update Vitals in Medical Record;
+
+:Diagnose Patient;
+:Update Diagnosis and Treatment Plan;
+
+:Complete Visit;
+:Request Medical Records;
+
+stop
+
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+
+class Patient {
+  - patientId: String
+  - name: String
+  - contactDetails: String
+  + requestAppointment(): void
+  + arriveAtHospital(): void
+  + completeVisit(): void
+  + requestMedicalRecords(): void
+}
+
+class Receptionist {
+  - employeeId: String
+  - name: String
+  + scheduleAppointment(p: Patient, a: Appointment): void
+  + registerArrival(p: Patient, h: Hospital): void
+  + notifyDoctor(d: Doctor, a: Appointment): void
+}
+
+class Appointment {
+  - appointmentId: String
+  - appointmentDate: Date
+  - details: String
+  + confirmDetails(): void
+}
+
+class Hospital {
+  - hospitalId: String
+  - name: String
+  - address: String
+  + registerPatientArrival(p: Patient): void
+}
+
+class Nurse {
+  - nurseId: String
+  - name: String
+  + assignToPatient(p: Patient): void
+  + checkVitals(p: Patient): void
+  + updateVitals(mr: MedicalRecord): void
+}
+
+class MedicalRecord {
+  - recordId: String
+  - patientId: String
+  - diagnosis: String
+  - treatmentPlan: String
+  + updateVitals(vitals: String): void
+  + updateDiagnosis(diagnosis: String, treatmentPlan: String): void
+  + requestMedicalRecords(): String
+}
+
+class Doctor {
+  - doctorId: String
+  - name: String
+  - specialty: String
+  + diagnosePatient(p: Patient): void
+  + updateDiagnosisAndTreatment(mr: MedicalRecord): void
+}
+
+' Define relationships
+Patient <--> Appointment : makes
+Patient <--> MedicalRecord : has
+Receptionist <--> Appointment : schedules
+Receptionist <--> Hospital : worksAt
+Hospital <--> Nurse : employs
+Nurse <--> MedicalRecord : updates
+Doctor <--> MedicalRecord : updates
+Doctor <--> Appointment : sees
+
+@enduml
