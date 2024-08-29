@@ -1,5 +1,5 @@
 @startuml
-
+skinparam actorStyle awesome
 actor Patient
 actor Receptionist
 actor Nurse
